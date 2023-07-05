@@ -1,0 +1,31 @@
+{
+  "responseHeader":{
+    "zkConnected":true,
+    "status":0,
+    "QTime":2,
+    "params":{
+      "q":"some: query",
+      "facet.field":"category",
+      "indent":"true",
+      "facet.mincount":"1",
+      "rows":"0",
+      "facet":"true",
+      "wt":"json"}},
+  "response":{"numFound":436,"start":0,"maxScore":10.917998,"numFoundExact":true,"docs":[]
+  },
+  "facet_counts":{
+    "facet_queries":{},
+    "facet_fields":{
+      "category":[
+        "first field",61,
+        "second field",49,
+        "third field",35,
+        "a",31,
+        "b",30,
+        "c",21,
+        "d",16
+        ]
+    },
+    "facet_ranges":{},
+    "facet_intervals":{},
+    "facet_heatmaps":{}}}
