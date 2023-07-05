@@ -4,9 +4,6 @@ import java.util.Map;
 
 public interface SolrPivot {
 
-    String PIVOT_FIELD_PATH = "/responseHeader/params/facet.pivot";
-    String PIVOT_DATA_FORMAT_PATH = "/facet_counts/facet_pivot/%s";
-
     Map<String, Map<String, Integer>> getPivotData(String json) throws SolrFacetException;
 
     static Map<String, Object> getPivotRequestMap(String query, String fields) {

@@ -4,9 +4,6 @@ import java.util.Map;
 
 public interface SolrFacet {
 
-    String FACET_FIELD_PATH = "/responseHeader/params/facet.field";
-    String FACET_DATA_FORMAT_PATH = "/facet_counts/facet_fields/%s";
-
     Integer getFacetLimit();
 
     String getOtherFieldName();

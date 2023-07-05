@@ -11,6 +11,9 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class DefaultSolrPivot implements SolrPivot {
 
+    private final static String PIVOT_FIELD_PATH = "/responseHeader/params/facet.pivot";
+    private final static String PIVOT_DATA_FORMAT_PATH = "/facet_counts/facet_pivot/%s";
+
     private final ObjectMapper objectMapper;
     private Map<String, String> keyReplacerMap;
     private String defaultReplacerValue;
@@ -26,11 +29,11 @@ public class DefaultSolrPivot implements SolrPivot {
         try {
             JsonNode pivotDataNode = getPivotDataNode(json);
             Map<String, Map<String, Integer>> facetDataMap = new HashMap<>();
-            for (JsonNode recordNode : pivotDataNode) {
+            for (var recordNode : pivotDataNode) {
                 Map<String, Integer> pivotMap = new HashMap<>();
 
                 JsonNode pivots = recordNode.get("pivot");
-                for (JsonNode pivot : pivots) {
+                for (var pivot : pivots) {
                     String value = getPivotValue(pivot);
                     int count = pivot.get("count").asInt();
                     pivotMap.put(value, count);

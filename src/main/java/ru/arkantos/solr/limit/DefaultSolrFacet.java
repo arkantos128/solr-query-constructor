@@ -13,6 +13,9 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class DefaultSolrFacet implements SolrFacet {
 
+    private final static String FACET_FIELD_PATH = "/responseHeader/params/facet.field";
+    private final static String FACET_DATA_FORMAT_PATH = "/facet_counts/facet_fields/%s";
+
     private final ObjectMapper objectMapper;
 
     @Getter
@@ -26,7 +29,6 @@ public class DefaultSolrFacet implements SolrFacet {
     public Map<String, Integer> getFacetData(String json) throws SolrFacetException {
         try {
             JsonNode facetDataNode = getFacetDataNode(json);
-
             Map<String, Integer> facetData = new LinkedHashMap<>();
             for (int i = 0; i < facetDataNode.size(); i += 2) {
                 facetData.put(facetDataNode.get(i).asText(), facetDataNode.get(i + 1).asInt());

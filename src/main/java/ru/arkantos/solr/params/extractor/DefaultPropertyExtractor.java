@@ -44,8 +44,8 @@ public class DefaultPropertyExtractor implements PropertyExtractor {
             try {
                 Method method = source.getClass().getMethod(methodName);
                 return method.invoke(source);
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException var9) {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "", var9);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "", e);
             }
         }
         return null;

@@ -66,7 +66,7 @@ class JoinQueryConstructor extends AbstractQueryConstructor {
             return self();
         }
 
-        public Builder defaultConstructor(QueryConstructor defaultQueryConstructor) {
+        public Builder defaultQueryConstructor(QueryConstructor defaultQueryConstructor) {
             this.defaultQueryConstructor = defaultQueryConstructor;
             return self();
         }

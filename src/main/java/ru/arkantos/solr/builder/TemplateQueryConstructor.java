@@ -91,7 +91,7 @@ class TemplateQueryConstructor extends AbstractQueryConstructor {
         } else {
             if (paramValue instanceof Object[] objs) {
                 paramValues = Arrays.asList(objs);
-            } else if (paramValue instanceof Collection col) {
+            } else if (paramValue instanceof Collection<?> col) {
                 paramValues.addAll(col);
             } else {
                 paramValues = List.of(paramValue);
