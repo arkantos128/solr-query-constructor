@@ -10,7 +10,8 @@ Human steve = new Human(
         );
 ```
 
-simple converter (field extractor), generics `<FIELD_TYPE, RESULT_TYPE>` (only if you personally need it, for query constructor `<Object, Object>` will be enough) 
+### converter (field extractor)
+simple converter, generics `<FIELD_TYPE, RESULT_TYPE>` (only if you personally need it, for query constructor `<Object, Object>` will be enough) 
 ```java
 Converter<String, String> nameConverter = Converter
         .defaultConverter("name", "name"); // ("path-to-the-field", "param-name")
@@ -43,15 +44,17 @@ ConverterPipeline converterPipeline = ConverterPipeline.defaultPipeline(
         );
 ```
 
-get query arguments container
+### arguments container
+get container from any object
 ```java
 Container paramsContainer = converterPipeline.convert(steve);
 ```
-or for prepared params map
+or from prepared map
 ```java
 Container paramsContainer = new Container(Map<String, Object>);
 ```
 
+### query constructors
 prepare query constructors \
 from string template
 ```java
