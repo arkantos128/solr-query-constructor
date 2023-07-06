@@ -69,7 +69,7 @@ from param value, only string keys too
 ```java
 QueryConstructor isAdultQuery = QueryConstructor.caseBuilder()
                 .caseParamKey("isAdult")
-                .addCase("true", QueryConstructor.templateBuilder() // only string case keys too 
+                .addCase("true", QueryConstructor.templateBuilder()
                         .queryTemplate("type:man").build())
                 .addCase("false", QueryConstructor.templateBuilder()
                         .queryTemplate("type:kid").build())
