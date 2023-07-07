@@ -15,6 +15,9 @@ simple converter, generics `<FIELD_TYPE, RESULT_TYPE>` (only if you personally n
 ```java
 Converter<String, String> nameConverter = Converter
         .defaultConverter("name", "name"); // ("path-to-the-field", "param-name")
+
+Converter<List<Integer>, List<Integer>> numbersConverter = Converter
+        .defaultConverter("favoriteNumbers", "numbers");
 ```
 converter with function
 ```java
@@ -22,13 +25,7 @@ Converter<Integer, Boolean> ageConverter = Converter
         .defaultConverter("age", "isAdult", age -> Boolean.valueOf(age > 18).toString());
 ```
 
-path separated by dots (even indexes)
-```java
-Converter<List<Integer>, List<Integer>> numbersConverter = Converter
-                .defaultConverter("favoriteNumbers.0", "numbers");
-```
-
-supported only string keys in map
+path separated by dots (even indexes), supported only string keys in map
 ```java
 Converter<String, String> mapConverter = Converter
         .defaultConverter("idkMap.someField.1", "someWord");
@@ -80,7 +77,7 @@ QueryConstructor isAdultQuery = QueryConstructor.caseBuilder()
                 .build();
 ```
 
-join list values with OR operator (e.g. `a:1 OR a:2 OR...`)
+join list values with OR operator (e.g. `num:1 OR num:2 OR...`)
 ```java
 QueryConstructor numbersQuery = QueryConstructor.templateBuilder()
                 .queryTemplate("num:{#numbers}")
@@ -96,7 +93,7 @@ QueryConstructor fullQuery = QueryConstructor.joinBuilder()
                 .add(numbersQuery)
                 .add(wordQuery)
               //.addAll(List<QueryConstructor>)
-              //.defaultQueryConstructor(QueryConstructor) optionaly, if all other returns null
+              //.defaultQueryConstructor(QueryConstructor) optionaly, if all others returns null
                 .build();
 ```
 
