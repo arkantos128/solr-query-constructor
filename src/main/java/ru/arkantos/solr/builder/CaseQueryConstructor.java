@@ -6,7 +6,7 @@ import ru.arkantos.solr.params.Container;
 import java.util.HashMap;
 import java.util.Map;
 
-class CaseQueryConstructor extends AbstractQueryConstructor {
+public class CaseQueryConstructor extends AbstractQueryConstructor {
 
     private final String caseParamKey;
     private final Map<Object, QueryConstructor> caseQueryBuilderMap;

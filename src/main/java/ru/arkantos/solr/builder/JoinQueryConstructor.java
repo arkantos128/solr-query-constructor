@@ -5,7 +5,7 @@ import ru.arkantos.solr.params.Container;
 import java.util.ArrayList;
 import java.util.List;
 
-class JoinQueryConstructor extends AbstractQueryConstructor {
+public class JoinQueryConstructor extends AbstractQueryConstructor {
 
     private final List<QueryConstructor> queryConstructors;
     private final QueryConstructor defaultQueryConstructor;

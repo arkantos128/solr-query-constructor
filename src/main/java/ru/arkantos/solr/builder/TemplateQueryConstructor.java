@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class TemplateQueryConstructor extends AbstractQueryConstructor {
+public class TemplateQueryConstructor extends AbstractQueryConstructor {
 
     private static final String VALUE_SEPARATOR = "\\|";
     private static final Pattern paramPattern = Pattern.compile("\\{#[^{}]+}");
