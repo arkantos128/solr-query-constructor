@@ -26,19 +26,19 @@
         "count":203,
         "pivot":[{
           "field":"field2",
-          "value":"replace_one",
+          "value":"one",
           "count":127},
           {
             "field":"field2",
-            "value":"replace_two",
+            "value":"two",
             "count":58},
           {
             "field":"field2",
-            "value":"other",
+            "value":"oth",
             "count":10},
           {
             "field":"field2",
-            "value":"no_replace",
+            "value":"oth",
             "count":8}]},
         {
           "field":"field1",
@@ -46,15 +46,15 @@
           "count":109,
           "pivot":[{
             "field":"field2",
-            "value":"replace_one",
+            "value":"one",
             "count":67},
             {
               "field":"field2",
-              "value":"replace_two",
+              "value":"two",
               "count":24},
             {
               "field":"field2",
-              "value":"other",
+              "value":"oth",
               "count":18}]},
         {
           "field":"field1",
@@ -62,15 +62,15 @@
           "count":98,
           "pivot":[{
             "field":"field2",
-            "value":"replace_one",
+            "value":"one",
             "count":95},
             {
               "field":"field2",
-              "value":"other",
+              "value":"oth",
               "count":2},
             {
               "field":"field2",
-              "value":"replace_two",
+              "value":"two",
               "count":1}]},
         {
           "field":"field1",
@@ -78,9 +78,9 @@
           "count":26,
           "pivot":[{
             "field":"field2",
-            "value":"replace_one",
+            "value":"one",
             "count":24},
             {
               "field":"field2",
-              "value":"other",
+              "value":"oth",
               "count":2}]}]}}}

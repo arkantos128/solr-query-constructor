@@ -16,21 +16,17 @@ import java.util.Map;
 public class SolrPivotTest {
 
     static SolrPivot pivotSolrFacet;
-    static Map<String, Map<String, Integer>> correctResult;
+    static Map<String, Map<String, Long>> correctResult;
 
     @BeforeAll
     static void beforeAll() {
-        Map<String, String> replacerMap = Map.of(
-                "replace_one", "rep_o",
-                "replace_two", "rep_t"
-        );
-        pivotSolrFacet = new DefaultSolrPivot(new ObjectMapper(), replacerMap, "oth");
+        pivotSolrFacet = new DefaultSolrPivot(new ObjectMapper());
 
         correctResult = Map.of(
-                "A", Map.of("rep_o", 95, "oth", 2, "rep_t", 1),
-                "U", Map.of("rep_o", 24, "oth", 2),
-                "G", Map.of("rep_o", 127, "rep_t", 58, "oth", 8),
-                "M", Map.of("rep_o", 67, "rep_t", 24, "oth", 18)
+                "A", Map.of("one", 95L, "oth", 2L, "two", 1L),
+                "U", Map.of("one", 24L, "oth", 2L),
+                "G", Map.of("one", 127L, "two", 58L, "oth", 18L),
+                "M", Map.of("one", 67L, "two", 24L, "oth", 18L)
         );
     }
 
@@ -38,8 +34,13 @@ public class SolrPivotTest {
     void testPivot() throws IOException, SolrFacetException {
         String path = this.getClass().getResource("/pivot-test-data.json").getPath();
         String solrResponse = Files.readString(Paths.get(path));
-        var parseResult = pivotSolrFacet.getPivotData(solrResponse);
-        Assertions.assertEquals(correctResult, parseResult);
+        var parseResult = pivotSolrFacet.getPivotData(solrResponse).toMap();
+        for (var e : correctResult.entrySet()) {
+            for (var e1: e.getValue().entrySet()) {
+                Long i = ((Map<String, Long>) parseResult.get(e.getKey())).get(e1.getKey());
+                Assertions.assertEquals(e1.getValue(), i);
+            }
+        }
     }
 
 }

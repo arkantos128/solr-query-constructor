@@ -1,10 +1,12 @@
 package ru.arkantos.solr.limit;
 
+import ru.arkantos.solr.limit.model.PivotResult;
+
 import java.util.Map;
 
 public interface SolrPivot {
 
-    Map<String, Map<String, Integer>> getPivotData(String json) throws SolrFacetException;
+    PivotResult getPivotData(String json) throws SolrFacetException;
 
     static Map<String, Object> getPivotRequestMap(String query, String fields) {
         return Map.of(

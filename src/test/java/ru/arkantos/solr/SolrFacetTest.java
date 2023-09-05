@@ -15,15 +15,15 @@ import java.util.Map;
 
 class SolrFacetTest {
     SolrFacet solrFacet = new DefaultSolrFacet(new ObjectMapper());
-    static Map<String, Integer> correctLimitOtherFacet;
+    static Map<String, Long> correctLimitOtherFacet;
 
     @BeforeAll
     static void beforeAll() {
         correctLimitOtherFacet = Map.of(
-                "first field", 61,
-                "second field", 49,
-                "third field", 35,
-                "other", 31 + 30 + 21 + 16
+                "first field", 61L,
+                "second field", 49L,
+                "third field", 35L,
+                "other", 31L + 30L + 21L + 16L
         );
     }
 
@@ -32,9 +32,9 @@ class SolrFacetTest {
         String path = this.getClass().getResource("/facet-test-data.json").getPath();
         String solrResponse = Files.readString(Paths.get(path));
 
-        Map<String, Integer> facetDataMap = solrFacet.getFacetData(solrResponse);
-        facetDataMap = solrFacet.limitAndAddOtherField(facetDataMap);
+        var facetData = solrFacet.getFacetData(solrResponse);
+        var limitFacetData = facetData.limitAndAddOtherField(3, "other");
 
-        Assertions.assertEquals(correctLimitOtherFacet, facetDataMap);
+        Assertions.assertEquals(correctLimitOtherFacet, limitFacetData.getFacetMap());
     }
 }

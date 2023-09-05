@@ -1,18 +1,12 @@
 package ru.arkantos.solr.limit;
 
+import ru.arkantos.solr.limit.model.FacetResult;
+
 import java.util.Map;
 
 public interface SolrFacet {
 
-    Integer getFacetLimit();
-
-    String getOtherFieldName();
-
-    Map<String, Integer> getFacetData(String json) throws SolrFacetException;
-
-    Map<String, Integer> limit(Map<String, Integer> dataMap);
-
-    Map<String, Integer> limitAndAddOtherField(Map<String, Integer> dataMap);
+    FacetResult getFacetData(String json) throws SolrFacetException;
 
     static Map<String, Object> getFacetRequestMap(String query, String field) {
         return Map.of(
