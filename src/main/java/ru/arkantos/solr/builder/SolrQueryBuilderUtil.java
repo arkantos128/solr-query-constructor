@@ -10,8 +10,6 @@ public class SolrQueryBuilderUtil {
 
     private final char[] MASK_LUCENE_ARR = {'"', '+', '-', '!', '(', ')', '{', '}', '[', ']', '^', '\\', '~', '*', '?', ':'};
 
-    private final char[][] MASK_STR_LUCENE_ARR = {{'&', '&'}, {'|', '|'}, {'O', 'R'}, {'A', 'N', 'D'}, {'N', 'O', 'T'}};
-
     public String escapeQueryChars(String value) {
         StringBuilder bf = new StringBuilder(value.length() + 100);
 

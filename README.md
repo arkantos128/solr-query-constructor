@@ -11,7 +11,7 @@ Human steve = new Human(
 ```
 
 ### converter (field extractor)
-simple converter, generics `<FIELD_TYPE, RESULT_TYPE>` (only if you personally need it, for query constructor `<Object, Object>` will be enough) 
+simple converter, generics `<FIELD_TYPE, RESULT_TYPE>` (only if you need it, can be `<Object, Object>`) 
 ```java
 Converter<String, String> nameConverter = Converter
         .defaultConverter("name", "name"); // ("path-to-the-field", "param-name")

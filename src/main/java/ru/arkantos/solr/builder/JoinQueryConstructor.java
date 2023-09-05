@@ -1,16 +1,14 @@
 package ru.arkantos.solr.builder;
 
-import lombok.Setter;
 import ru.arkantos.solr.params.Container;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Setter
 class JoinQueryConstructor extends AbstractQueryConstructor {
 
-    private List<QueryConstructor> queryConstructors;
-    private QueryConstructor defaultQueryConstructor;
+    private final List<QueryConstructor> queryConstructors;
+    private final QueryConstructor defaultQueryConstructor;
 
     public JoinQueryConstructor(Builder builder) {
         super(builder);
@@ -29,14 +27,14 @@ class JoinQueryConstructor extends AbstractQueryConstructor {
             if (queryConstructor.isWrapBrackets()) {
                 query = "(" + query + ")";
             }
-            if (sb.length() == 0) {
+            if (sb.isEmpty()) {
                 sb.append(query);
             } else {
                 sb.append(" ").append(joinOperator).append(" ").append(query);
             }
         }
 
-        if (sb.length() == 0) {
+        if (sb.isEmpty()) {
             if (defaultQueryConstructor != null) {
                 return defaultQueryConstructor.buildQuery(container);
             }

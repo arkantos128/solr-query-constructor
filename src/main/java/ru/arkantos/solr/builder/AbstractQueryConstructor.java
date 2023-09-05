@@ -18,7 +18,7 @@ public abstract class AbstractQueryConstructor implements QueryConstructor {
     }
 
     @NoArgsConstructor
-    static abstract class Builder<T extends Builder<T>> {
+    public static abstract class Builder<T extends Builder<T>> {
         protected boolean wrapBrackets = true;
         protected JoinOperator joinOperator = JoinOperator.AND;
 

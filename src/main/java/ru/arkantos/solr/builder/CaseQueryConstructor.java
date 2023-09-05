@@ -1,18 +1,16 @@
 package ru.arkantos.solr.builder;
 
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import ru.arkantos.solr.params.Container;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Setter
 class CaseQueryConstructor extends AbstractQueryConstructor {
 
-    private String caseParamKey;
-    private Map<Object, QueryConstructor> caseQueryBuilderMap;
-    private QueryConstructor defaultQueryConstructor;
+    private final String caseParamKey;
+    private final Map<Object, QueryConstructor> caseQueryBuilderMap;
+    private final QueryConstructor defaultQueryConstructor;
 
     CaseQueryConstructor(Builder builder) {
         super(builder);
